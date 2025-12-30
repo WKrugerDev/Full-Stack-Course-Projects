@@ -1,0 +1,61 @@
+@page "/feedbackform"
+@using FeedbackApp.Models
+@using FeedbackApp.Services
+
+@inject FeedbackService FeedbackService
+<PageTitle>Feedback Form</PageTitle>
+<h1>Feedback Form</h1>
+<p>Please provide your feedback below:</p>
+
+<EditForm Model="@feedback" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <InputText id="name" class="form-control" @bind-Value="feedback.UserName" />
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <InputText id="email" type="email" class="form-control" @bind-Value="feedback.Email" />
+    </div> 
+
+    <div class="mb-3">
+        <label for="comments" class="form-label">Comments:</label>
+        <InputTextArea id="comments" class="form-control" @bind-Value="feedback.Comment" />
+
+    </div> 
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <a href="/feedbacklist" class="btn btn-link">View Submitted Feedback</a>
+
+
+</EditForm>
+
+@if (isSubmitted)
+{
+    <div class="alert alert-success mt-3" role="alert">
+        Thank you for your feedback!
+    </div>
+}
+
+@code{
+
+    private Feedback feedback = new Feedback();
+    private bool isSubmitted = false;
+
+    private async Task HandleValidSubmit()
+    {
+        // Handle the valid form submission (e.g., save feedback, send email, etc.)
+        await FeedbackService.AddFeedbackAsync(feedback);//async save
+        Console.WriteLine($"Feedback submitted by {feedback.UserName} ({feedback.Email}): {feedback.Comment}");
+        // Reset the form
+        feedback = new Feedback();
+        isSubmitted = true;
+
+    }
+
+
+}

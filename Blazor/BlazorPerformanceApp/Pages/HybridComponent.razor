@@ -1,0 +1,34 @@
+@page "/hybridcomponent"
+<PageTitle>Hybrid Component</PageTitle>
+<h1>Hybrid Rendering Component</h1>
+
+@if (Data == null || !Data.Any())
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <ul>
+        @foreach (var item in Data)
+        {
+            <li>@item</li>
+        }
+    </ul>
+}
+
+@code {
+    private List<string>? Data;
+    [Inject]
+    private ILogger<HybridComponent>? Logger { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Simulate fetching data from a server or database
+        Logger.LogInformation("Fetching data for HybridComponent...");
+        await Task.Delay(1000); // Simulate network delay
+        Data = new List<string> { "Test data 1", "Test data 2", "Test data 3" };
+        Logger.LogInformation("Data fetched successfully.");
+    }
+
+   
+}

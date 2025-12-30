@@ -1,0 +1,66 @@
+@page "/signalrchat"
+@using Microsoft.AspNetCore.SignalR.Client
+@implements IAsyncDisposable
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+<h3>SignalR Chat</h3>
+<input @bind="userInput" placeholder="Enter your name" />
+<br />
+<input @bind="messageInput" placeholder="Enter your message" />
+<button @onclick="SendMessage">Send</button>
+<ul>
+    @foreach (var msg in messages)
+    {
+        <li><strong>@msg.User:</strong> @msg.Message</li>
+    } 
+
+</ul>
+
+@code {
+    private HubConnection? hubConnection;
+    private string userInput = string.Empty;
+    private string messageInput = string.Empty;
+    private List<ChatMessage> messages = new List<ChatMessage>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(Navigation.ToAbsoluteUri("/notificationHub"))
+            .Build();
+
+        hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
+        {
+            var encodedMsg = new ChatMessage { User = user, Message = message };
+            messages.Add(encodedMsg);
+            InvokeAsync(StateHasChanged);
+        });
+
+        await hubConnection.StartAsync();
+    }
+
+    private async Task SendMessage()
+    {
+        if (hubConnection is null)
+        return;
+
+        if (!string.IsNullOrEmpty(userInput) && !string.IsNullOrEmpty(messageInput))
+        {
+            await hubConnection.SendAsync("SendMessage", userInput, messageInput);
+            messageInput = string.Empty;
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+{
+    if (hubConnection is not null)
+        await hubConnection.DisposeAsync();
+}
+
+    private class ChatMessage
+    {
+        public required string User { get; set; }
+        public required string Message { get; set; }
+    }
+
+
+}

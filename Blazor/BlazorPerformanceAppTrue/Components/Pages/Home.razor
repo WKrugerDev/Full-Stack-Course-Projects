@@ -1,0 +1,29 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<h1>Home</h1>
+
+<p>This page demonstrates hybrid component lazy loading.</p>
+
+<button class="btn btn-primary" @onclick="LoadHybridComponent">
+    Load Hybrid Component
+</button>
+
+@if (isComponentLoaded)
+{
+    <HybridComponent />
+}
+
+@code {
+    private bool isComponentLoaded = false;
+
+    private void LoadHybridComponent()
+    {
+        
+        isComponentLoaded = true;
+    }
+
+    
+}
+

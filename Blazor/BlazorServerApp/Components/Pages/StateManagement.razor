@@ -1,0 +1,14 @@
+@page "/statemanagement"
+@rendermode InteractiveServer
+<h3>State Management Page</h3>
+<p>This page demonstrates state management in a Blazor Server application.</p>
+<p>Current Counter: @counter</p>
+<button @onclick="IncrementCounter">Increment Counter</button>
+@code {
+    private int counter = 0;
+
+    private void IncrementCounter()
+    {
+        counter++;
+    }
+}

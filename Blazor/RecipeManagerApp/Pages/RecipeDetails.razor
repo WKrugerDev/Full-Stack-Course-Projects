@@ -1,0 +1,32 @@
+@page "/recipe/{Id:int}"
+@using RecipeManagerApp.Data
+@inject NavigationManager NavigationManager 
+@inject RecipeService RecipeService
+<PageTitle>Recipe Details</PageTitle>
+<h1>Recipe Details</h1>
+@if (recipe != null)
+{
+    <div class="recipe-details">
+        <h2>@recipe.Name</h2>
+        <p>@recipe.Description</p>
+    </div>
+}
+else
+{
+    <p>Recipe not found.</p>
+}
+
+<NavLink href="/">Back to Home</NavLink>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Recipe? recipe;
+
+    protected override void OnParametersSet()
+    {
+        // Fetch the recipe from the shared service
+        recipe = RecipeService.GetRecipeById(Id);
+    }
+}

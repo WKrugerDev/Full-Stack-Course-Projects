@@ -1,0 +1,43 @@
+@page "/feedbacklist"
+@using FeedbackApp.Models
+@using FeedbackApp.Services
+@using System.Linq
+@inject FeedbackService FeedbackService
+<PageTitle>Feedback List</PageTitle>
+<h1>Feedback List</h1>
+@if (feedbacks == null || feedbacks.Count == 0)
+{
+    <p>No feedback available.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Comments</th>
+                <th>Submitted At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var fb in feedbacks)
+            {
+                <tr>
+                    <td>@fb.UserName</td>
+                    <td>@fb.Email</td>
+                    <td>@fb.Comment</td>
+                     <td>@fb.SubmittedAt.ToString("g")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    private List<Feedback> feedbacks = new List<Feedback>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        feedbacks =  await FeedbackService.GetAllFeedbackAsync();
+    }
+}

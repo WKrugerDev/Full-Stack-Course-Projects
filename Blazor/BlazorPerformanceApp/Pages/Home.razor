@@ -1,0 +1,19 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<button class="btn btn-primary" @onclick="LoadComponent">Load Hybrid Component</button>
+
+@if (isComponentLoaded)
+{
+    <HybridComponent />
+}
+
+@code {
+    private bool isComponentLoaded = false;
+
+    private void LoadComponent()
+    {
+        isComponentLoaded = true;
+    }
+}

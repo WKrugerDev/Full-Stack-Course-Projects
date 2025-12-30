@@ -1,0 +1,31 @@
+﻿@page "/"
+@using RecipeManagerApp.Data
+@inject RecipeService RecipeService
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+@foreach (var recipe in recipes)
+{
+    <div class="recipe">
+        <h3>@recipe.Name</h3>
+        <p>@recipe.Description</p>
+
+        <a href="/recipe/@recipe.Id">View Details</a>
+    </div>
+}
+
+<NavLink href="/addrecipe">Add Recipe</NavLink>
+
+@code {
+    private List<Recipe> recipes = new List<Recipe>();
+
+    protected override void OnInitialized()
+    {
+        // Fetch all recipes from the service
+        recipes = RecipeService.GetAllRecipes();
+    }
+}

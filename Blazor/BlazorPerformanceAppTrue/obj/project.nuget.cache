@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "BJs8Qzcg7y4=",
+  "success": true,
+  "projectFilePath": "F:\\Projects - VS Code\\Blazor\\BlazorPerformanceAppTrue\\BlazorPerformanceAppTrue.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\werne\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.0\\microsoft.aspnetcore.app.internal.assets.10.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

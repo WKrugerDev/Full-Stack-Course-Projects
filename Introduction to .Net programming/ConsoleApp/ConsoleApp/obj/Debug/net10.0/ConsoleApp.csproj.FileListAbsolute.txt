@@ -1,0 +1,17 @@
+f:\Visual Code Projects\ConsoleApp\bin\Debug\net10.0\ConsoleApp.exe
+f:\Visual Code Projects\ConsoleApp\bin\Debug\net10.0\ConsoleApp.deps.json
+f:\Visual Code Projects\ConsoleApp\bin\Debug\net10.0\ConsoleApp.runtimeconfig.json
+f:\Visual Code Projects\ConsoleApp\bin\Debug\net10.0\ConsoleApp.dll
+f:\Visual Code Projects\ConsoleApp\bin\Debug\net10.0\ConsoleApp.pdb
+f:\Visual Code Projects\ConsoleApp\bin\Debug\net10.0\Pastel.dll
+f:\Visual Code Projects\ConsoleApp\obj\Debug\net10.0\ConsoleApp.csproj.AssemblyReference.cache
+f:\Visual Code Projects\ConsoleApp\obj\Debug\net10.0\ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+f:\Visual Code Projects\ConsoleApp\obj\Debug\net10.0\ConsoleApp.AssemblyInfoInputs.cache
+f:\Visual Code Projects\ConsoleApp\obj\Debug\net10.0\ConsoleApp.AssemblyInfo.cs
+f:\Visual Code Projects\ConsoleApp\obj\Debug\net10.0\ConsoleApp.csproj.CoreCompileInputs.cache
+f:\Visual Code Projects\ConsoleApp\obj\Debug\net10.0\ConsoleApp.csproj.Up2Date
+f:\Visual Code Projects\ConsoleApp\obj\Debug\net10.0\ConsoleApp.dll
+f:\Visual Code Projects\ConsoleApp\obj\Debug\net10.0\refint\ConsoleApp.dll
+f:\Visual Code Projects\ConsoleApp\obj\Debug\net10.0\ConsoleApp.pdb
+f:\Visual Code Projects\ConsoleApp\obj\Debug\net10.0\ConsoleApp.genruntimeconfig.cache
+f:\Visual Code Projects\ConsoleApp\obj\Debug\net10.0\ref\ConsoleApp.dll

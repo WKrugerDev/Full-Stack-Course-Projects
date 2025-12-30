@@ -1,0 +1,38 @@
+@inject AdvancedBlazorComponents.Services.DataService DataService
+
+<h3>Reusable Component Data:</h3>
+
+<ul>
+    @foreach (var item in DataService.GetData())
+    {
+        <li>@item</li>
+    }
+</ul>
+<p style="color:@ThemeColor">
+    This text uses the theme color!
+</p>
+
+<!-- Include the child component -->
+<ChildComponent @ref="childRef" />
+
+<!-- Button to call the child component method -->
+<button @onclick="GetChildMessage">Get Child Message</button>
+
+<p>@message</p>
+
+@code {
+    [CascadingParameter]
+    public string ThemeColor { get; set; }
+
+    // Reference to the child component
+    private ChildComponent childRef;
+
+    private string message;
+
+    private void GetChildMessage()
+    {
+        // Access the child component method
+        message = childRef.GetMessage();
+    }
+}
+

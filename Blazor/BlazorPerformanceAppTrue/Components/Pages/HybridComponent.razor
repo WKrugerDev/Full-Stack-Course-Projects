@@ -1,0 +1,41 @@
+@rendermode InteractiveServer
+
+<h3>Hybrid Rendering Component (Server Interactive)</h3>
+
+@if (Data == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <ul>
+        @foreach (var item in Data)
+        {
+            <li>@item</li>
+        }
+    </ul>
+}
+
+@code {
+    [Inject]
+    private ILogger<HybridComponent>? Logger { get; set; }
+    private List<string>? Data;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Logger?.LogInformation("HybridComponent: Initialization started.");
+        // Simulate server-side data fetch
+        await Task.Delay(3000);
+
+        Data = new List<string>
+        {
+            "Test Data 1",
+            "Test Data 2",
+            "Test Data 3"
+        };
+        Logger?.LogInformation("HybridComponent: Data fetch completed.");
+    }
+    
+}
+
+    

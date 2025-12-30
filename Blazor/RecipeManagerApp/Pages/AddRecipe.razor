@@ -1,0 +1,40 @@
+@page "/addrecipe"
+@using RecipeManagerApp.Data
+@inject NavigationManager NavigationManager
+@inject RecipeService RecipeService
+
+<PageTitle>Add Recipe</PageTitle>
+<h1>Add a New Recipe</h1>
+<EditForm Model="newRecipe" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label for="name">Recipe Name:</label>
+        <InputText id="name" @bind-Value="newRecipe.Name" />
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <InputTextArea id="description" @bind-Value="newRecipe.Description" />
+    </div>
+    <button type="submit">Add Recipe</button>
+</EditForm>
+
+@code {
+    private Recipe newRecipe = new Recipe();
+
+    private void HandleValidSubmit()
+    {
+        // Add recipe to the shared service
+        RecipeService.AddRecipe(newRecipe);
+
+        // Reset the form
+        newRecipe = new Recipe();
+
+        // Navigate back to Home
+        NavigationManager.NavigateTo("/");
+
+    }
+}
+
+
