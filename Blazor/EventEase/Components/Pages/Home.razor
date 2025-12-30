@@ -1,0 +1,35 @@
+﻿@page "/"
+@inject AppState AppState
+
+<h1>Welcome to EventEase!</h1>
+
+<p>
+    EventEase helps you track and register for upcoming events like conferences, networking nights, and special occasions.
+</p>
+
+<p>
+    Navigate to the <strong>Events</strong> tab to see all upcoming events and register.
+</p>
+
+@code {
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Simulate logout when returning to homepage
+            if (AppState.IsLoggedIn)
+            {
+                var userName = AppState.CurrentUser;
+                AppState.Logout();
+                // Pop-up only if they were logged in
+                Console.WriteLine($"User '{userName}' was logged out returning to the homepage.");
+                // Optional browser alert to showcase to peers
+                JS.InvokeVoidAsync("alert", $"Welcome back {userName}! You have been logged out returning to the homepage.");
+            }
+        }
+    }
+
+    [Inject]
+    private IJSRuntime JS { get; set; } = default!;
+}
+

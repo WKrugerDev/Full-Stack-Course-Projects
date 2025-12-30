@@ -1,0 +1,159 @@
+@page "/events"
+@using EventEase.Models
+@inject NavigationManager Navigation
+@inject EventEase.Services.AppState AppState
+@inject EventEase.Services.EventService EventService
+@inject IJSRuntime JS
+
+<h1>Upcoming Events</h1>
+
+
+@if (AppState.IsLoggedIn) // Show current user if logged in
+{
+    <p><strong>Current User:</strong> @AppState.CurrentUser</p>
+}
+
+
+@if (events == null || events.Count == 0)
+{
+    // Show loading state - simulated with delay in OnInitializedAsync
+    <p>Loading events...</p>
+}
+else
+{
+    //Virtualize for performance with large lists
+    <Virtualize Items="events" Context="evt">
+        <EventCard
+            @key="evt.Id"
+            EventName="@evt.Name"
+            EventDate="@evt.Date"
+            Location="@evt.Location" />
+
+        <button class="btn btn-primary mb-4" @onclick="() => ViewDetails(evt)">
+            View Details
+        </button>
+    </Virtualize>
+}
+
+
+<hr />
+
+<button class="btn btn-success" @onclick="CheckAddEvent">
+    Add Event 
+</button>
+
+@if (AppState.IsLoggedIn)   // Show logout if logged in
+{
+    <button class="btn btn-secondary ms-2" @onclick="Logout">Logout</button>
+}
+else                        // Show login if not logged in
+{
+    <button class="btn btn-primary ms-2" @onclick="ShowLoginPopup">Login</button>
+}
+
+@if (showLoginModal)
+{
+    <div class="modal-backdrop fade show"></div>
+    <div class="modal d-block" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" @onclick="CloseLoginPopup"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" placeholder="Enter your name" @bind="loginUsername" />
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" @onclick="ConfirmLogin">Login</button>
+                    <button class="btn btn-secondary" @onclick="CloseLoginPopup">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (showLoginRequiredModal)
+{
+    <div class="modal-backdrop fade show"></div>
+    <div class="modal d-block" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login Required</h5>
+                    <button type="button" class="btn-close" @onclick="CloseLoginModal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>You must be logged in to perform this action.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" @onclick="CloseLoginModal">Close</button>
+                    <button class="btn btn-primary" @onclick="ShowLoginPopup">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private bool showLoginModal = false;
+    bool showLoginRequiredModal = false;
+    private string loginUsername = string.Empty;
+    private List<Event> events = new();
+    protected override async Task OnInitializedAsync()
+    {
+        // Simulate fetch delay
+    await Task.Delay(500);
+
+    // Fetch events from the service
+    events = await EventService.GetEventsAsync();
+    events = events.OrderBy(e => e.Date).ToList();
+    }
+
+    private void ViewDetails(Event evt)
+    {
+        AppState.SelectEvent(evt.Id); // Track selected event
+        Navigation.NavigateTo($"/events/{evt.Id}");
+    }
+
+    private void CheckAddEvent()
+    {
+        if (AppState.IsLoggedIn)
+        {
+            Navigation.NavigateTo("/events/add");
+        }
+        else
+        {   
+            showLoginRequiredModal = true;
+        }
+    }
+
+    private void CloseLoginModal()
+    {
+        showLoginRequiredModal = false;
+    }
+
+    private void Logout()
+    {
+        AppState.Logout();
+    }
+
+    private void ShowLoginPopup() // Show login modal
+    {
+        loginUsername = string.Empty; // reset previous input
+        showLoginModal = true;
+        showLoginRequiredModal = false;
+    }
+    private void CloseLoginPopup()
+    {
+        showLoginModal = false;
+    }
+    private void ConfirmLogin()
+    {
+        if (!string.IsNullOrWhiteSpace(loginUsername))
+        {
+            AppState.Login(loginUsername.Trim());
+            showLoginModal = false;
+        }
+    }
+}

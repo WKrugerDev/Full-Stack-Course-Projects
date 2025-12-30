@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeVault - Secure Registration</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 500px; margin: 50px auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        button { background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .error { color: red; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <h2>SafeVault Registration</h2>
+    <form id="registrationForm" action="/api/auth/register" method="post">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required 
+                   pattern="[a-zA-Z0-9_]{3,100}" 
+                   title="Username must be 3-100 characters, letters, numbers, and underscores only">
+            <div class="error" id="usernameError"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required maxlength="100">
+            <div class="error" id="emailError"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required 
+                   minlength="6" maxlength="100"
+                   title="Password must be 6-100 characters with at least one letter and one number">
+            <div class="error" id="passwordError"></div>
+        </div>
+        
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        // Client-side validation and XSS prevention
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Clear previous errors
+            document.querySelectorAll('.error').forEach(el => el.textContent = '');
+            
+            // Validate username
+            if (!/^[a-zA-Z0-9_]{3,100}$/.test(username)) {
+                document.getElementById('usernameError').textContent = 'Invalid username format';
+                return;
+            }
+            
+            // Validate email
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('emailError').textContent = 'Invalid email format';
+                return;
+            }
+            
+            // Validate password
+            if (password.length < 6 || !/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
+                document.getElementById('passwordError').textContent = 'Password must be at least 6 characters with letters and numbers';
+                return;
+            }
+            
+            // Submit form via fetch API
+            fetch('/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    email: email,
+                    password: password
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.token) {
+                    alert('Registration successful!');
+                    localStorage.setItem('token', data.token);
+                } else {
+                    alert('Registration failed: ' + (data.message || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Registration failed');
+            });
+        });
+    </script>
+</body>
+</html>

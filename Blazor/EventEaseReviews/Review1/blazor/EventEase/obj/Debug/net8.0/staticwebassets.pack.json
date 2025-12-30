@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "c:\\Users\\piyuskum\\Downloads\\My Dotnet\\Courses\\ns fullstack\\blazor\\module5\\EventEase\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\EventEase.bundle.scp.css",
+      "PackagePath": "staticwebassets\\EventEase.bundle.scp.css"
+    },
+    {
+      "Id": "c:\\Users\\piyuskum\\Downloads\\My Dotnet\\Courses\\ns fullstack\\blazor\\module5\\EventEase\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "c:\\Users\\piyuskum\\Downloads\\My Dotnet\\Courses\\ns fullstack\\blazor\\module5\\EventEase\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "c:\\Users\\piyuskum\\Downloads\\My Dotnet\\Courses\\ns fullstack\\blazor\\module5\\EventEase\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\piyuskum\\Downloads\\My Dotnet\\Courses\\ns fullstack\\blazor\\module5\\EventEase\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.EventEase.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.EventEase.props",
+      "PackagePath": "build\\EventEase.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.EventEase.props",
+      "PackagePath": "buildMultiTargeting\\EventEase.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.EventEase.props",
+      "PackagePath": "buildTransitive\\EventEase.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

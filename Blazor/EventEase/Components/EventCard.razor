@@ -1,0 +1,16 @@
+<div class="event-card">
+    <h3>@EventName</h3>
+    <p><strong>Date:</strong> @EventDate</p>
+    <p><strong>Location:</strong> @Location</p>
+</div>
+
+@code {
+    [Parameter]
+    public string EventName { get; set; } = string.Empty;
+
+    [Parameter]
+    public DateTime EventDate { get; set; }
+
+    [Parameter]
+    public string Location { get; set; } = string.Empty;
+}

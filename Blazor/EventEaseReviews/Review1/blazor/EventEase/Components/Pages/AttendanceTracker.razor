@@ -1,0 +1,120 @@
+@page "/attendance"
+@using EventEase.Models
+@using EventEase.Services
+@inject EventService EventService
+@inject AttendanceService AttendanceService
+@rendermode InteractiveServer
+
+<PageTitle>Attendance Tracker - EventEase</PageTitle>
+
+<h1>Attendance Tracker</h1>
+
+@if (isLoading)
+{
+    <div class="text-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var eventItem in events)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>@eventItem.Name</h5>
+                        <small class="text-muted">@eventItem.Date.ToString("MMM dd, yyyy")</small>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Location:</strong> @eventItem.Location</p>
+                        <p><strong>Registered Attendees:</strong> @GetAttendeeCount(eventItem.Id)</p>
+                        <button class="btn btn-info btn-sm" @onclick="() => ShowAttendees(eventItem.Id)">
+                            View Attendees
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (selectedEventAttendees.Any())
+    {
+        <div class="mt-4">
+            <h3>Attendees for @selectedEventName</h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Registration Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var attendee in selectedEventAttendees)
+                        {
+                            <tr>
+                                <td>@attendee.UserName</td>
+                                <td>@attendee.UserEmail</td>
+                                <td>@attendee.RegistrationDate.ToString("MMM dd, yyyy HH:mm")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    private List<Event> events = new();
+    private List<AttendanceRecord> selectedEventAttendees = new();
+    private string selectedEventName = string.Empty;
+    private bool isLoading = true;
+    private Dictionary<int, int> attendeeCounts = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            events = await EventService.GetEventsAsync();
+            
+            foreach (var eventItem in events)
+            {
+                var count = await AttendanceService.GetAttendeeCountAsync(eventItem.Id);
+                attendeeCounts[eventItem.Id] = count;
+            }
+        }
+        catch (Exception ex)
+        {
+            events = new List<Event>();
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private int GetAttendeeCount(int eventId)
+    {
+        return attendeeCounts.TryGetValue(eventId, out var count) ? count : 0;
+    }
+
+    private async Task ShowAttendees(int eventId)
+    {
+        try
+        {
+            selectedEventAttendees = await AttendanceService.GetEventAttendeesAsync(eventId);
+            var eventItem = events.FirstOrDefault(e => e.Id == eventId);
+            selectedEventName = eventItem?.Name ?? "Unknown Event";
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            selectedEventAttendees = new List<AttendanceRecord>();
+        }
+    }
+}

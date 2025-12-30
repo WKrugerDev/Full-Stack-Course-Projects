@@ -1,0 +1,94 @@
+@page "/events/{Id:int}/register"
+@using EventEase.Models
+@inject NavigationManager Navigation
+@inject EventEase.Services.AppState AppState
+@inject EventEase.Services.EventService EventService
+@inject EventEase.Services.EventRegistrationService EventRegistrationService
+
+<h1>Event Registration</h1>
+
+@if (AppState.IsLoggedIn) // Show current user if logged in
+{
+    <p><strong>Current User:</strong> @AppState.CurrentUser</p>
+}
+
+@if (eventItem != null)
+{
+    <h2>Register for: @eventItem.Name</h2>
+
+    
+    <EditForm Model="registrationModel!" OnValidSubmit="HandleSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+
+        <div class="form-group mb-3">
+            <label for="attendeeName">Name:</label>
+            <InputText id="attendeeName" class="form-control" @bind-Value="registrationModel!.Name" />
+            <ValidationMessage For="@(() => registrationModel.Name)" />
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="attendeeEmail">Email:</label>
+            <InputText id="attendeeEmail" class="form-control" @bind-Value="registrationModel.Email" />
+            <ValidationMessage For="@(() => registrationModel.Email)" />
+        </div>
+
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <button type="button" class="btn btn-secondary" @onclick="GoBack">Back to Event Details</button>
+    </EditForm>
+}
+else
+{
+    <p>Event not found.</p>
+}
+
+<button class="btn btn-secondary ms-2" @onclick="Logout">Logout</button>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Event? eventItem;
+    private EventRegistration? registrationModel;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        registrationModel = new EventRegistration();
+        
+        var evt = await EventService.GetEventByIdAsync(Id);
+
+        if (evt == null || !AppState.IsLoggedIn)
+        {
+            Navigation.NavigateTo("/events");
+            return;
+        }
+
+        eventItem = evt;
+        registrationModel = new EventRegistration { EventId = evt.Id };
+    }
+
+    private async Task HandleSubmit()
+    {
+        if (registrationModel == null)
+            return;
+
+        AppState.UpdateActivity(); // Track that a user interacted
+        await Task.Delay(100); // Simulate async operation
+        await EventRegistrationService.AddRegistrationAsync(registrationModel!);
+        Navigation.NavigateTo($"/events/{Id}");
+    }
+
+    private void GoBack()
+    {
+        Navigation.NavigateTo($"/events/{Id}");
+    }
+
+    private void Logout()
+    {
+        AppState.Logout();
+        Navigation.NavigateTo("/events");
+    }
+}
+

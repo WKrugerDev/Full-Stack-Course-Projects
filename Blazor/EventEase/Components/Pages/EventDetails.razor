@@ -1,0 +1,193 @@
+@page "/events/{Id:int}"
+@using EventEase.Models
+@inject NavigationManager Navigation
+@inject EventEase.Services.AppState AppState
+@inject EventEase.Services.EventService EventService
+@inject EventEase.Services.EventRegistrationService EventRegistrationService
+
+<h1>Event Details</h1>
+
+@if (AppState.IsLoggedIn) // Show current user if logged in
+{
+    <p><strong>Current User:</strong> @AppState.CurrentUser</p>
+}
+
+@if (eventItem != null)
+{
+    <div class="event-details">
+        <h2>@eventItem.Name</h2>
+        <p><strong>Date:</strong> @eventItem.Date.ToShortDateString()</p>
+        <p><strong>Location:</strong> @eventItem.Location</p>
+    </div>
+    <p>Number of attendees: @registrations.Count</p>
+
+@if (AppState.IsLoggedIn)
+{
+    @if (registrations.Any())
+    {
+        <h3>Registered Attendees</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var reg in registrations)
+                {
+                    <tr>
+                        <td>@reg.Name</td>
+                        <td>@reg.Email</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No attendees registered yet.</p>
+    }
+}
+else
+{
+    <p>Please log in to see the list of attendees.</p>
+}
+
+    <button class="btn btn-primary" @onclick="CheckRegister">Register for Event</button>
+    <button class="btn btn-secondary" @onclick="GoBack">Back to List</button>
+    @if (AppState.IsLoggedIn)   // Show logout if logged in
+    {
+        <button class="btn btn-secondary ms-2" @onclick="Logout">Logout</button>
+    }
+    else                        // Show login if not logged in
+    {
+        <button class="btn btn-primary ms-2" @onclick="ShowLoginPopup">Login</button>
+    }
+}
+else
+{
+    <p>Event not found.</p>
+}
+
+
+
+@if (showLoginModal)
+{
+    <div class="modal-backdrop fade show"></div>
+    <div class="modal d-block" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" @onclick="CloseLoginPopup"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" placeholder="Enter your name" @bind="loginUsername" />
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" @onclick="ConfirmLogin">Login</button>
+                    <button class="btn btn-secondary" @onclick="CloseLoginPopup">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (showLoginRequiredModal)
+{
+    <div class="modal-backdrop fade show"></div>
+    <div class="modal d-block" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login Required</h5>
+                    <button type="button" class="btn-close" @onclick="CloseLoginModal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>You must be logged in to perform this action.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" @onclick="CloseLoginModal">Close</button>
+                    <button class="btn btn-primary" @onclick="ShowLoginPopup">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private bool showLoginModal = false;
+    private bool showLoginRequiredModal = false;
+
+    private string loginUsername = string.Empty;
+    
+    private Event? eventItem;
+
+    private List<EventRegistration> registrations = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500); // Simulate fetch delay
+        eventItem = await EventService.GetEventByIdAsync(Id);
+
+        if (eventItem == null)
+            return;
+
+        registrations = await EventRegistrationService.GetRegistrationsForEventAsync(Id);
+        registrations = registrations.OrderBy(r => r.Name).ToList();
+
+        AppState.SelectEvent(Id);
+    }
+    
+    private void CheckRegister()
+    {
+        if (AppState.IsLoggedIn)
+        {
+            Navigation.NavigateTo($"/events/{Id}/register");
+        }
+        else
+        {
+        showLoginRequiredModal = true;
+        }
+    }
+
+    private void CloseLoginModal()
+    {
+        showLoginRequiredModal = false;
+    }
+
+    
+
+    private void ShowLoginPopup() // Show login modal
+    {
+        loginUsername = string.Empty; // reset previous input
+        showLoginModal = true;
+        showLoginRequiredModal = false;
+    }
+    private void CloseLoginPopup()
+    {
+        showLoginModal = false;
+    }
+    private void ConfirmLogin()
+    {
+        if (!string.IsNullOrWhiteSpace(loginUsername))
+        {
+            AppState.Login(loginUsername.Trim());
+            showLoginModal = false;
+        }
+    }
+
+    private void GoBack()
+    {
+        Navigation.NavigateTo("/events");
+    }
+
+    private void Logout()
+    {
+        AppState.Logout();
+    } 
+}

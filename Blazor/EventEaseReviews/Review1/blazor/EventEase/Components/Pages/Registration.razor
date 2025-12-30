@@ -1,0 +1,143 @@
+@page "/register/{eventId:int}"
+@using EventEase.Models
+@using EventEase.Services
+@using System.ComponentModel.DataAnnotations
+@inject EventService EventService
+@inject AttendanceService AttendanceService
+@inject SessionService SessionService
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+
+<PageTitle>Event Registration - EventEase</PageTitle>
+
+@if (isLoading)
+{
+    <div class="text-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+}
+else if (currentEvent != null)
+{
+    <div class="container">
+        <h1>Register for @currentEvent.Name</h1>
+        <p><strong>Date:</strong> @currentEvent.Date.ToString("MMMM dd, yyyy")</p>
+        <p><strong>Location:</strong> @currentEvent.Location</p>
+        
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Registration Form</h5>
+                <EditForm Model="@registration" OnValidSubmit="@HandleValidSubmit">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary class="text-danger" />
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <InputText class="form-control" @bind-Value="registration.FullName" />
+                        <ValidationMessage For="@(() => registration.FullName)" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <InputText type="email" class="form-control" @bind-Value="registration.Email" />
+                        <ValidationMessage For="@(() => registration.Email)" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone (Optional)</label>
+                        <InputText class="form-control" @bind-Value="registration.Phone" />
+                        <ValidationMessage For="@(() => registration.Phone)" />
+                    </div>
+                    <button type="submit" class="btn btn-success" disabled="@isSubmitting">@(isSubmitting ? "Registering..." : "Register")</button>
+                    <a href="/event/@currentEvent.Id" class="btn btn-secondary ms-2">Back to Event</a>
+                </EditForm>
+            </div>
+        </div>
+        
+        @if (isRegistered)
+        {
+            <div class="alert alert-success mt-3">
+                <h4>Registration Successful!</h4>
+                <p>Thank you for registering, @registration.FullName! A confirmation email has been sent to @registration.Email.</p>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        <h4>Event Not Found</h4>
+        <p>The requested event could not be found.</p>
+        <a href="/events" class="btn btn-primary">Browse All Events</a>
+    </div>
+}
+
+@code {
+    [Parameter] public int EventId { get; set; }
+    
+    private Event? currentEvent;
+    private RegistrationModel registration = new();
+    private bool isRegistered = false;
+    private bool isLoading = true;
+    private bool isSubmitting = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            if (EventId <= 0)
+            {
+                Navigation.NavigateTo("/events");
+                return;
+            }
+            
+            currentEvent = await EventService.GetEventByIdAsync(EventId);
+        }
+        catch (Exception ex)
+        {
+            currentEvent = null;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+    
+    private async Task HandleValidSubmit()
+    {
+        isSubmitting = true;
+        
+        try
+        {
+            // Check if user is already registered
+            var alreadyRegistered = await AttendanceService.IsUserRegisteredAsync(EventId, registration.Email);
+            
+            if (alreadyRegistered)
+            {
+                // Show error message for duplicate registration
+                return;
+            }
+            
+            // Register the attendee
+            var success = await AttendanceService.RegisterAttendeeAsync(EventId, registration.FullName, registration.Email);
+            
+            if (success)
+            {
+                // Store user session data
+                SessionService.SetValue("LastRegisteredEvent", EventId);
+                SessionService.SetValue("UserName", registration.FullName);
+                SessionService.SetValue("UserEmail", registration.Email);
+                
+                await Task.Delay(500); // Simulate processing
+                isRegistered = true;
+            }
+        }
+        catch (Exception ex)
+        {
+            // Handle error
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
+    }
+}

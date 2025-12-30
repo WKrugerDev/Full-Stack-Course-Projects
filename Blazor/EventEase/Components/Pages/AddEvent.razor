@@ -1,0 +1,73 @@
+@page "/events/add"
+@using EventEase.Models
+@inject NavigationManager Navigation
+@inject EventEase.Services.AppState AppState
+@inject EventEase.Services.EventService EventService
+
+<h1>Add New Event</h1>
+
+@if (AppState.IsLoggedIn) // Show current user if logged in
+{
+    <p><strong>Current User:</strong> @AppState.CurrentUser</p>
+}
+
+<EditForm Model="newEvent" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group mb-3">
+        <label>Event Name</label>
+        <InputText class="form-control" @bind-Value="newEvent.Name" />
+        <ValidationMessage For="@(() => newEvent.Name)" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label>Date & Time</label>
+        <input type="datetime-local" class="form-control" @bind="newEvent.Date" />
+        <ValidationMessage For="@(() => newEvent.Date)" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label>Location</label>
+        <InputText class="form-control" @bind-Value="newEvent.Location" />
+        <ValidationMessage For="@(() => newEvent.Location)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" class="btn btn-secondary ms-2" @onclick="GoBack">
+        Back to Events List
+    </button>
+</EditForm>
+
+<button class="btn btn-secondary ms-2" @onclick="Logout">Logout</button>
+
+@code {
+    private Event newEvent = new();
+    private static int _nextId = 1;
+
+    protected override void OnInitialized()
+    {
+        if (!AppState.IsLoggedIn)
+        {
+            Navigation.NavigateTo("/events");
+        }
+    }
+    private async Task HandleSubmit()
+    {
+        AppState.UpdateActivity(); // Track that a user interacted
+        await Task.Delay(100); // Simulate async operation
+        await EventService.AddEventAsync(newEvent);
+        Navigation.NavigateTo("/events");
+    }
+
+    private void GoBack()
+    {
+        Navigation.NavigateTo("/events");
+    }
+
+    private void Logout()
+    {
+        AppState.Logout();
+        Navigation.NavigateTo("/events");
+    }
+}

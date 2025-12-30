@@ -1,0 +1,62 @@
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\bin\Debug\net8.0\appsettings.Development.json
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\bin\Debug\net8.0\appsettings.json
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\bin\Debug\net8.0\EventEase.staticwebassets.runtime.json
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\bin\Debug\net8.0\EventEase.exe
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\bin\Debug\net8.0\EventEase.deps.json
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\bin\Debug\net8.0\EventEase.runtimeconfig.json
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\bin\Debug\net8.0\EventEase.dll
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\bin\Debug\net8.0\EventEase.pdb
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\EventEase.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\EventEase.AssemblyInfoInputs.cache
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\EventEase.AssemblyInfo.cs
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\EventEase.csproj.CoreCompileInputs.cache
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\EventEase.MvcApplicationPartsAssemblyInfo.cache
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\staticwebassets.build.json
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\staticwebassets.development.json
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\staticwebassets\msbuild.EventEase.Microsoft.AspNetCore.StaticWebAssets.props
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\staticwebassets\msbuild.build.EventEase.props
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.EventEase.props
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.EventEase.props
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\staticwebassets.pack.json
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\scopedcss\bundle\EventEase.styles.css
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\scopedcss\projectbundle\EventEase.bundle.scp.css
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\EventEase.dll
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\refint\EventEase.dll
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\EventEase.pdb
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\EventEase.genruntimeconfig.cache
+c:\Users\piyuskum\Downloads\My Dotnet\Courses\ns fullstack\blazor\module5\EventEase\obj\Debug\net8.0\ref\EventEase.dll
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\bin\Debug\net8.0\appsettings.Development.json
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\bin\Debug\net8.0\appsettings.json
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\bin\Debug\net8.0\EventEase.staticwebassets.runtime.json
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\bin\Debug\net8.0\EventEase.staticwebassets.endpoints.json
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\bin\Debug\net8.0\EventEase.exe
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\bin\Debug\net8.0\EventEase.deps.json
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\bin\Debug\net8.0\EventEase.runtimeconfig.json
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\bin\Debug\net8.0\EventEase.dll
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\bin\Debug\net8.0\EventEase.pdb
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\rpswa.dswa.cache.json
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\EventEase.GeneratedMSBuildEditorConfig.editorconfig
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\EventEase.AssemblyInfoInputs.cache
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\EventEase.AssemblyInfo.cs
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\EventEase.csproj.CoreCompileInputs.cache
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\EventEase.MvcApplicationPartsAssemblyInfo.cache
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\EventEase.sourcelink.json
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\rjimswa.dswa.cache.json
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\scopedcss\bundle\EventEase.styles.css
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\scopedcss\projectbundle\EventEase.bundle.scp.css
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\staticwebassets.build.json
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\staticwebassets.build.json.cache
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\staticwebassets.development.json
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\swae.build.ex.cache
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\EventEase.dll
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\refint\EventEase.dll
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\EventEase.pdb
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\EventEase.genruntimeconfig.cache
+F:\Projects - VS Code\Blazor\EventEaseReviews\Review1\blazor\EventEase\obj\Debug\net8.0\ref\EventEase.dll

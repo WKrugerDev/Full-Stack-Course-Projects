@@ -1,0 +1,77 @@
+@page "/event/{id:int}"
+@using EventEase.Models
+@using EventEase.Services
+@inject EventService EventService
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+
+<PageTitle>Event Details - EventEase</PageTitle>
+
+@if (isLoading)
+{
+    <div class="text-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+}
+else if (currentEvent != null)
+{
+    <div class="container">
+        <h1>@currentEvent.Name</h1>
+        <div class="row">
+            <div class="col-md-8">
+                <p><strong>Date:</strong> @currentEvent.Date.ToString("MMMM dd, yyyy")</p>
+                <p><strong>Location:</strong> @currentEvent.Location</p>
+                <p><strong>Description:</strong> @currentEvent.Description</p>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Register Now</h5>
+                        <p class="card-text">Don't miss this amazing event!</p>
+                        <a href="/register/@currentEvent.Id" class="btn btn-success">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="/events" class="btn btn-secondary mt-3">Back to Events</a>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        <h4>Event Not Found</h4>
+        <p>The requested event could not be found. It may have been removed or the link is incorrect.</p>
+        <a href="/events" class="btn btn-primary">Browse All Events</a>
+    </div>
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+    
+    private Event? currentEvent;
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            if (Id <= 0)
+            {
+                Navigation.NavigateTo("/events");
+                return;
+            }
+            
+            currentEvent = await EventService.GetEventByIdAsync(Id);
+        }
+        catch (Exception ex)
+        {
+            currentEvent = null;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

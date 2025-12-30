@@ -1,0 +1,31 @@
+@using EventEase.Services
+@inject SessionService SessionService
+
+<div class="user-session-info">
+    @if (hasUserSession)
+    {
+        <div class="alert alert-info">
+            <small>
+                Welcome back, @userName! 
+                @if (lastEventId.HasValue)
+                {
+                    <span>Last registered for event ID: @lastEventId</span>
+                }
+            </small>
+        </div>
+    }
+</div>
+
+@code {
+    private bool hasUserSession = false;
+    private string userName = string.Empty;
+    private int? lastEventId;
+
+    protected override void OnInitialized()
+    {
+        userName = SessionService.GetValue<string>("UserName") ?? string.Empty;
+        lastEventId = SessionService.GetValue<int?>("LastRegisteredEvent");
+        
+        hasUserSession = !string.IsNullOrEmpty(userName);
+    }
+}

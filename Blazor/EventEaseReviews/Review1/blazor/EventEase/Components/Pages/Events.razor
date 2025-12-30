@@ -1,0 +1,58 @@
+@page "/events"
+@using EventEase.Models
+@using EventEase.Components
+@using EventEase.Services
+@inject EventService EventService
+@rendermode InteractiveServer
+
+<PageTitle>Events - EventEase</PageTitle>
+
+<h1>Upcoming Events</h1>
+
+@if (isLoading)
+{
+    <div class="text-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+}
+else if (events.Any())
+{
+    <div class="row">
+        @foreach (var eventItem in events)
+        {
+            <div class="col-md-6 col-lg-4">
+                <EventCard Event="eventItem" />
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        <h4>No Events Available</h4>
+        <p>There are currently no events scheduled. Please check back later.</p>
+    </div>
+}
+
+@code {
+    private List<Event> events = new();
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            events = await EventService.GetEventsAsync();
+        }
+        catch (Exception ex)
+        {
+            events = new List<Event>();
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

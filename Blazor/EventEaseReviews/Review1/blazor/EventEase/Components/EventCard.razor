@@ -1,0 +1,18 @@
+@using EventEase.Models
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">@Event.Name</h5>
+        <p class="card-text">
+            <strong>Date:</strong> @Event.Date.ToString("MMM dd, yyyy")<br>
+            <strong>Location:</strong> @Event.Location
+        </p>
+        <p class="card-text">@Event.Description</p>
+        <a href="/event/@Event.Id" class="btn btn-primary">View Details</a>
+        <a href="/register/@Event.Id" class="btn btn-success ms-2">Register</a>
+    </div>
+</div>
+
+@code {
+    [Parameter] public Event Event { get; set; } = new();
+}

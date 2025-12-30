@@ -1,0 +1,46 @@
+### Get all users
+GET https://localhost:7xxx/api/users
+Authorization: Bearer valid-token-123
+
+### Get user by ID
+GET https://localhost:7xxx/api/users/1
+Authorization: Bearer valid-token-123
+
+### Create new user
+POST https://localhost:7xxx/api/users
+Authorization: Bearer valid-token-123
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "phone": "+1234567890"
+}
+
+### Update user
+PUT https://localhost:7xxx/api/users/1
+Authorization: Bearer valid-token-123
+Content-Type: application/json
+
+{
+  "name": "Jane Doe",
+  "email": "jane@example.com",
+  "phone": "+0987654321"
+}
+
+### Delete user
+DELETE https://localhost:7xxx/api/users/1
+Authorization: Bearer valid-token-123
+
+### Test without authentication (should return 401)
+GET https://localhost:7xxx/api/users
+
+### Test with invalid data (should return 400)
+POST https://localhost:7xxx/api/users
+Authorization: Bearer valid-token-123
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "invalid-email"
+}
