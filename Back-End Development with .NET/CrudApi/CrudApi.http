@@ -1,0 +1,33 @@
+@host = http://localhost:5153
+
+###
+
+GET {{host}}/blogs
+
+###
+
+GET {{host}}/blogs/0
+
+###
+
+POST {{host}}/blogs
+Content-Type: application/json
+
+{
+  "title": "Third Blog Post",
+  "body": "This is the content of the third blog post."
+}
+
+###
+
+DELETE {{host}}/blogs/1
+
+###
+
+PUT {{host}}/blogs/0
+Content-Type: application/json
+
+{
+  "title": "Updated Blog Post",
+  "body": "This is the updated content of the blog post."
+}
