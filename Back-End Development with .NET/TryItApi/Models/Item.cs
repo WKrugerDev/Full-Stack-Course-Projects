@@ -4,8 +4,7 @@ namespace TryItApi.Models;
 
 public class Item
 {
-    [Required]
-    public int Id { get; set; }
+    public int Id { get; set; } // assigned by server, no [Required]
      [Required]
     public string Name { get; set; } = string.Empty;
      [Required]

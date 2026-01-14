@@ -8,7 +8,7 @@ var items = new List<Item>();
 
 app.MapGet("/", () => "Welcome to the Simple Web API!");
 
-app.MapGet("/items/", () => {return items;});
+app.MapGet("/items", () => {return items;});
 
 app.MapGet("/items/{id}", (int id) =>
 {
@@ -16,8 +16,9 @@ app.MapGet("/items/{id}", (int id) =>
     return item is not null ? Results.Ok(item) : Results.NotFound();
 });
 
-app.MapPost("/items/", (Item newItem) =>
+app.MapPost("/items", (Item newItem) =>
 {
+    newItem.Id = items.Count + 1; // server assigns ID
     items.Add(newItem);
     return Results.Created($"/items/{newItem.Id}", newItem);
 });
