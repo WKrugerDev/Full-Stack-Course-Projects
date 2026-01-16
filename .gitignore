@@ -1,0 +1,40 @@
+# Ignore build outputs
+bin/
+obj/
+Debug/
+Release/
+*.log
+
+# Ignore .NET Core files
+*.dll
+*.pdb
+*.exe
+*.cache
+*.generated.cs
+*.designer.cs
+
+# Ignore Rider / JetBrains IDE files
+.idea/
+*.iml
+
+# Ignore node_modules (for any JS/HTML folders)
+node_modules/
+
+# Ignore local environment files
+.env
+*.local
+
+# Ignore generated Blazor WebAssembly files
+wwwroot/_framework/
+
+# Ignore publish output
+publish/
+*.zip
+*.tar.gz
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore package folders
+packages/
