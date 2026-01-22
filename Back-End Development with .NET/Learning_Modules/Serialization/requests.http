@@ -1,0 +1,19 @@
+###Manual Json Serialization
+GET http://localhost:5000/manual-json
+Accept: application/json
+
+###Automatic Json Serialization (using results.json)
+GET http://localhost:5000/json
+Accept: application/json
+
+###Automatic Json Serialization (just return an object)
+GET http://localhost:5000/auto
+Accept: application/json
+
+###Manual xml Serialization
+GET http://localhost:5000/xml
+Accept: application/xml
+
+###Custom Json Serialization
+GET http://localhost:5000/custom-serializer
+Accept: application/json

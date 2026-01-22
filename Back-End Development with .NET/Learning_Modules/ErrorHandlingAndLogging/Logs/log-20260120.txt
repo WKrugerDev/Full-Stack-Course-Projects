@@ -1,0 +1,23 @@
+[2026-01-20 09:18:23 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2026-01-20 09:30:52 WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+[2026-01-20 09:46:31 ERR] Connection id "0HNINUU8KFHC2", Request id "0HNINUU8KFHC2:00000004": An unhandled exception was thrown by the application.
+System.ArgumentException: .NET number values such as positive and negative infinity cannot be written as valid JSON. To make it work when using 'JsonSerializer', consider specifying 'JsonNumberHandling.AllowNamedFloatingPointLiterals' (see https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonnumberhandling).
+   at System.Text.Json.ThrowHelper.ThrowArgumentException_ValueNotSupported()
+   at System.Text.Json.Utf8JsonWriter.WriteNumberValue(Double value)
+   at System.Text.Json.Serialization.Converters.DoubleConverter.WriteNumberWithCustomHandling(Utf8JsonWriter writer, Double value, JsonNumberHandling handling)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at Microsoft.AspNetCore.Http.HttpResponseJsonExtensions.<WriteAsJsonAsync>g__WriteAsJsonAsyncSlow|5_0[TValue](HttpResponse response, TValue value, JsonTypeInfo`1 jsonTypeInfo)
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.ExecuteResultWriteResponse(IResult result, HttpContext httpContext)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+[2026-01-20 09:59:11 ERR] Division by zero attempted: 10/0
+System.DivideByZeroException: Attempted to divide by zero.
+   at Controllers.ErrorHandlingController.GetDivisionResult(Int32 numerator, Int32 denominator) in F:\Projects - VS Code\Back-End Development with .NET\ErrorHandlingAndLogging\Controllers\ErrorHandlingController.cs:line 19
+[2026-01-20 16:04:52 ERR] Division by zero attempted: 10/0
+System.DivideByZeroException: Attempted to divide by zero.
+   at ErrorHandlingAndLogging.Controllers.ErrorHandlingController.GetDivisionResult(Int32 numerator, Int32 denominator) in F:\Projects - VS Code\Back-End Development with .NET\ErrorHandlingAndLogging\Controllers\ErrorHandlingController.cs:line 22

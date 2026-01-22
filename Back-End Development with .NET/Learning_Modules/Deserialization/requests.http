@@ -1,0 +1,88 @@
+### Automatic Deserialization
+POST http://localhost:5151/auto
+Content-Type: application/json
+
+{
+  "UserName": "Alice",
+  "UserAge": 30
+}
+
+### Basic Json Deserialization
+POST http://localhost:5151/json
+Content-Type: application/json
+
+{
+  "UserName": "Alice",
+  "UserAge": 30
+}
+
+### XML Request to JSON Endpoint - To demonstrate failure
+POST http://localhost:5151/json
+Content-Type: application/xml
+
+<Person>
+  <UserName>Alice</UserName>
+  <UserAge>30</UserAge>
+</Person>
+
+### XML as application/json - To demonstrate failure
+POST http://localhost:5151/json
+Content-Type: application/json
+
+<Person>
+  <UserName>Alice</UserName>
+  <UserAge>30</UserAge>
+</Person>
+
+### Missing Age Property
+POST http://localhost:5151/json
+Content-Type: application/json
+
+{
+  "UserName": "Dana"
+}
+
+### Missing Name Property - To demonstrate failure
+POST http://localhost:5151/json
+Content-Type: application/json
+
+{
+  "UserAge": 35
+}
+
+### Extra Fields in JSON
+POST http://localhost:5151/json
+Content-Type: application/json
+
+{
+  "UserName": "Charlie",
+  "UserAge": 28,
+  "ExtraField": "This field is ignored"
+}
+
+### Age as String - To demonstrate error
+POST http://localhost:5151/json
+Content-Type: application/json
+
+{
+  "UserAge": "Buffalo"
+}
+
+### Custom Deserialization Options - Disallow Unmapped Members
+POST http://localhost:5151/xml
+Content-Type: application/xml
+
+<Person>
+  <UserName>Alice</UserName>
+  <UserAge>30</UserAge>
+</Person>
+
+
+### Custom Deserialization Options - Disallow Unmapped Members
+POST http://localhost:5151/xml
+Content-Type: application/json
+
+{
+  "UserName": "Charlie",
+  "UserAge": 28
+}

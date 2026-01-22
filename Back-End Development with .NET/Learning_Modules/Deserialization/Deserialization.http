@@ -1,0 +1,6 @@
+@Deserialization_HostAddress = http://localhost:5151
+
+GET {{Deserialization_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
