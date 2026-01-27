@@ -1,0 +1,6 @@
+2026-01-27 16:35:21.134 +02:00 [WRN] Failed to determine the https port for redirect.
+2026-01-27 16:35:21.178 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 16:35:21.230 +02:00 [INF] Outgoing Response: GET /api/Users responded 401
+2026-01-27 16:36:56.341 +02:00 [WRN] Failed to determine the https port for redirect.
+2026-01-27 16:36:56.379 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 16:36:56.431 +02:00 [INF] Outgoing Response: GET /api/Users responded 200

@@ -1,0 +1,140 @@
+2026-01-27 10:11:29.386 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:11:29.453 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:11:29.683 +02:00 [INF] Outgoing Response: POST /api/Users responded 201
+2026-01-27 10:11:29.686 +02:00 [INF] Response: 201 for POST /api/Users
+2026-01-27 10:12:07.882 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:12:07.885 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:12:07.897 +02:00 [INF] Outgoing Response: POST /api/Users responded 400
+2026-01-27 10:12:07.900 +02:00 [INF] Response: 400 for POST /api/Users
+2026-01-27 10:12:26.825 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:12:26.829 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:12:26.834 +02:00 [INF] Outgoing Response: POST /api/Users responded 201
+2026-01-27 10:12:26.836 +02:00 [INF] Response: 201 for POST /api/Users
+2026-01-27 10:12:50.809 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:12:50.810 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:12:50.820 +02:00 [INF] Outgoing Response: POST /api/Users responded 201
+2026-01-27 10:12:50.823 +02:00 [INF] Response: 201 for POST /api/Users
+2026-01-27 10:12:56.701 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 10:12:56.703 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 10:12:56.706 +02:00 [INF] Outgoing Response: GET /api/Users responded 200
+2026-01-27 10:12:56.708 +02:00 [INF] Response: 200 for GET /api/Users
+2026-01-27 10:19:23.116 +02:00 [WRN] Failed to determine the https port for redirect.
+2026-01-27 10:19:23.152 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 10:19:23.156 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 10:19:23.199 +02:00 [INF] Outgoing Response: GET /api/Users responded 200
+2026-01-27 10:19:23.204 +02:00 [INF] Response: 200 for GET /api/Users
+2026-01-27 10:21:08.260 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:21:08.263 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:21:08.312 +02:00 [INF] Outgoing Response: POST /api/Users responded 201
+2026-01-27 10:21:08.316 +02:00 [INF] Response: 201 for POST /api/Users
+2026-01-27 10:21:36.542 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:21:36.554 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:21:36.558 +02:00 [INF] Outgoing Response: POST /api/Users responded 201
+2026-01-27 10:21:36.560 +02:00 [INF] Response: 201 for POST /api/Users
+2026-01-27 10:21:59.227 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:21:59.241 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:21:59.248 +02:00 [INF] Outgoing Response: POST /api/Users responded 201
+2026-01-27 10:21:59.252 +02:00 [INF] Response: 201 for POST /api/Users
+2026-01-27 10:22:29.206 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:22:29.208 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:22:29.240 +02:00 [INF] Outgoing Response: POST /api/Users responded 400
+2026-01-27 10:22:29.243 +02:00 [INF] Response: 400 for POST /api/Users
+2026-01-27 10:22:52.852 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 10:22:52.855 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 10:22:52.857 +02:00 [INF] Outgoing Response: GET /api/Users responded 200
+2026-01-27 10:22:52.860 +02:00 [INF] Response: 200 for GET /api/Users
+2026-01-27 10:23:13.388 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:23:13.389 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:23:13.391 +02:00 [INF] Outgoing Response: POST /api/Users responded 400
+2026-01-27 10:23:13.394 +02:00 [INF] Response: 400 for POST /api/Users
+2026-01-27 10:23:31.772 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:23:31.775 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:23:31.779 +02:00 [INF] Outgoing Response: POST /api/Users responded 400
+2026-01-27 10:23:31.782 +02:00 [INF] Response: 400 for POST /api/Users
+2026-01-27 10:24:40.895 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:24:40.897 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:24:40.900 +02:00 [INF] Outgoing Response: POST /api/Users responded 400
+2026-01-27 10:24:40.902 +02:00 [INF] Response: 400 for POST /api/Users
+2026-01-27 10:41:17.677 +02:00 [INF] Incoming Request: GET /api/Users/1
+2026-01-27 10:41:17.684 +02:00 [INF] Incoming Request: GET /api/Users/1
+2026-01-27 10:41:17.691 +02:00 [INF] Outgoing Response: GET /api/Users/1 responded 200
+2026-01-27 10:41:17.693 +02:00 [INF] Response: 200 for GET /api/Users/1
+2026-01-27 10:41:20.663 +02:00 [INF] Incoming Request: GET /api/Users/2
+2026-01-27 10:41:20.665 +02:00 [INF] Incoming Request: GET /api/Users/2
+2026-01-27 10:41:20.667 +02:00 [INF] Outgoing Response: GET /api/Users/2 responded 200
+2026-01-27 10:41:20.669 +02:00 [INF] Response: 200 for GET /api/Users/2
+2026-01-27 10:41:25.019 +02:00 [INF] Incoming Request: GET /api/Users/3
+2026-01-27 10:41:25.021 +02:00 [INF] Incoming Request: GET /api/Users/3
+2026-01-27 10:41:25.025 +02:00 [INF] Outgoing Response: GET /api/Users/3 responded 200
+2026-01-27 10:41:25.027 +02:00 [INF] Response: 200 for GET /api/Users/3
+2026-01-27 10:41:54.937 +02:00 [INF] Incoming Request: PUT /api/Users/1
+2026-01-27 10:41:54.944 +02:00 [INF] Incoming Request: PUT /api/Users/1
+2026-01-27 10:41:54.953 +02:00 [INF] Outgoing Response: PUT /api/Users/1 responded 200
+2026-01-27 10:41:54.955 +02:00 [INF] Response: 200 for PUT /api/Users/1
+2026-01-27 10:42:04.059 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 10:42:04.061 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 10:42:04.063 +02:00 [INF] Outgoing Response: GET /api/Users responded 200
+2026-01-27 10:42:04.064 +02:00 [INF] Response: 200 for GET /api/Users
+2026-01-27 10:42:19.492 +02:00 [INF] Incoming Request: PUT /api/Users/4
+2026-01-27 10:42:19.494 +02:00 [INF] Incoming Request: PUT /api/Users/4
+2026-01-27 10:42:19.504 +02:00 [INF] Outgoing Response: PUT /api/Users/4 responded 404
+2026-01-27 10:42:19.505 +02:00 [INF] Response: 404 for PUT /api/Users/4
+2026-01-27 10:42:28.995 +02:00 [INF] Incoming Request: PUT /api/Users/3
+2026-01-27 10:42:28.997 +02:00 [INF] Incoming Request: PUT /api/Users/3
+2026-01-27 10:42:28.999 +02:00 [INF] Outgoing Response: PUT /api/Users/3 responded 400
+2026-01-27 10:42:29.002 +02:00 [INF] Response: 400 for PUT /api/Users/3
+2026-01-27 10:42:53.937 +02:00 [INF] Incoming Request: PUT /api/Users/3
+2026-01-27 10:42:53.939 +02:00 [INF] Incoming Request: PUT /api/Users/3
+2026-01-27 10:42:53.941 +02:00 [INF] Outgoing Response: PUT /api/Users/3 responded 400
+2026-01-27 10:42:53.944 +02:00 [INF] Response: 400 for PUT /api/Users/3
+2026-01-27 10:43:11.761 +02:00 [INF] Incoming Request: DELETE /api/Users/3
+2026-01-27 10:43:11.763 +02:00 [INF] Incoming Request: DELETE /api/Users/3
+2026-01-27 10:43:11.767 +02:00 [INF] Outgoing Response: DELETE /api/Users/3 responded 204
+2026-01-27 10:43:11.770 +02:00 [INF] Response: 204 for DELETE /api/Users/3
+2026-01-27 10:43:39.655 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 10:43:39.656 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 10:43:39.658 +02:00 [INF] Outgoing Response: GET /api/Users responded 200
+2026-01-27 10:43:39.660 +02:00 [INF] Response: 200 for GET /api/Users
+2026-01-27 10:47:05.568 +02:00 [WRN] Failed to determine the https port for redirect.
+2026-01-27 10:47:05.600 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 10:47:05.606 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 10:47:05.626 +02:00 [INF] Outgoing Response: GET /api/Users responded 401
+2026-01-27 10:47:05.630 +02:00 [INF] Response: 401 for GET /api/Users
+2026-01-27 10:47:13.578 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 10:47:13.584 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 10:47:13.608 +02:00 [INF] Outgoing Response: GET /api/Users responded 200
+2026-01-27 10:47:13.610 +02:00 [INF] Response: 200 for GET /api/Users
+2026-01-27 10:47:22.508 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:47:22.510 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:47:22.558 +02:00 [INF] Outgoing Response: POST /api/Users responded 201
+2026-01-27 10:47:22.560 +02:00 [INF] Response: 201 for POST /api/Users
+2026-01-27 10:47:42.675 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:47:42.676 +02:00 [INF] Incoming Request: POST /api/Users
+2026-01-27 10:47:42.701 +02:00 [INF] Outgoing Response: POST /api/Users responded 400
+2026-01-27 10:47:42.703 +02:00 [INF] Response: 400 for POST /api/Users
+2026-01-27 12:34:50.910 +02:00 [ERR] Failed to generate OpenAPI JSON on startup
+System.NotSupportedException: The type 'System.Net.Http.HttpMethod' is not a supported dictionary key using converter of type 'System.Text.Json.Serialization.Converters.SmallObjectWithParameterizedConstructorConverter`5[System.Net.Http.HttpMethod,System.String,System.Object,System.Object,System.Object]'. Custom converters can add support for dictionary key serialization by overriding the 'ReadAsPropertyName' and 'WriteAsPropertyName' methods. The unsupported member type is located on type 'Microsoft.OpenApi.OpenApiOperation'. Path: $.Paths.Operations.
+ ---> System.NotSupportedException: The type 'System.Net.Http.HttpMethod' is not a supported dictionary key using converter of type 'System.Text.Json.Serialization.Converters.SmallObjectWithParameterizedConstructorConverter`5[System.Net.Http.HttpMethod,System.String,System.Object,System.Object,System.Object]'. Custom converters can add support for dictionary key serialization by overriding the 'ReadAsPropertyName' and 'WriteAsPropertyName' methods.
+   at System.Text.Json.ThrowHelper.ThrowNotSupportedException_DictionaryKeyTypeNotSupported(Type keyType, JsonConverter converter)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteAsPropertyName(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteAsPropertyNameCore(Utf8JsonWriter writer, T value, JsonSerializerOptions options, Boolean isWritingExtensionDataProperty)
+   at System.Text.Json.Serialization.Converters.DictionaryOfTKeyTValueConverter`3.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonDictionaryConverter`3.OnTryWrite(Utf8JsonWriter writer, TDictionary dictionary, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.DictionaryOfTKeyTValueConverter`3.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonDictionaryConverter`3.OnTryWrite(Utf8JsonWriter writer, TDictionary dictionary, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ThrowNotSupportedException(WriteStack& state, Exception innerException)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Serialize(Utf8JsonWriter writer, T& rootValue, Object rootValueBoxed)
+   at System.Text.Json.JsonSerializer.WriteString[TValue](TValue& value, JsonTypeInfo`1 jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.Serialize[TValue](TValue value, JsonSerializerOptions options)
+   at Program.<Main>$(String[] args) in F:\Projects - VS Code\Back-End Development with .NET\Main Project\UserManagementAPI\Program.cs:line 92

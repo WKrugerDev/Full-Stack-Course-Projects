@@ -1,0 +1,6 @@
+@CustomMiddlewarePractice_HostAddress = http://localhost:5250
+
+GET {{CustomMiddlewarePractice_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

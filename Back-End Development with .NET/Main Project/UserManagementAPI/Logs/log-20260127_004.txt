@@ -1,0 +1,18 @@
+2026-01-27 16:36:56.341 +02:00 [WRN] Failed to determine the https port for redirect.
+2026-01-27 16:36:56.379 +02:00 [INF] Incoming Request: GET /api/Users
+2026-01-27 16:36:56.431 +02:00 [INF] Outgoing Response: GET /api/Users responded 200
+2026-01-27 18:24:40.795 +02:00 [WRN] Failed to determine the https port for redirect.
+2026-01-27 18:24:40.845 +02:00 [INF] Incoming Request: GET /users
+2026-01-27 18:24:40.873 +02:00 [INF] Outgoing Response: GET /users responded 401
+2026-01-27 18:24:51.498 +02:00 [INF] Incoming Request: GET /users
+2026-01-27 18:24:51.501 +02:00 [INF] Outgoing Response: GET /users responded 401
+2026-01-27 18:25:02.866 +02:00 [INF] Incoming Request: GET /users
+2026-01-27 18:25:02.868 +02:00 [INF] Outgoing Response: GET /users responded 401
+2026-01-27 18:25:15.777 +02:00 [INF] Incoming Request: GET /users
+2026-01-27 18:25:15.780 +02:00 [INF] Outgoing Response: GET /users responded 404
+2026-01-27 18:25:26.601 +02:00 [INF] Incoming Request: POST /users
+2026-01-27 18:25:26.603 +02:00 [INF] Outgoing Response: POST /users responded 404
+2026-01-27 18:28:40.833 +02:00 [INF] Incoming Request: POST /users
+2026-01-27 18:28:40.834 +02:00 [INF] Outgoing Response: POST /users responded 404
+2026-01-27 18:31:21.487 +02:00 [INF] Incoming Request: POST /api/users
+2026-01-27 18:31:21.553 +02:00 [INF] Outgoing Response: POST /api/users responded 201
