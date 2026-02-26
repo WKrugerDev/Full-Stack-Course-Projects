@@ -1,0 +1,31 @@
+@inject HttpClient Http
+
+@page "/products"
+@using Microsoft.VisualBasic
+@using System.Runtime.InteropServices
+
+<PageTitle>Products</PageTitle>
+
+<h1>Products</h1>
+
+<p>
+@foreach (var Product in products)
+{
+    <li>@Product.Name - @Product.Price</li>
+}
+</p>
+
+@code {
+    public class Product
+    {
+        public int Id {get; set; }
+        public string Name {get; set; } = string.Empty;
+        public decimal Price {get; set;}
+    }
+    private List<Product> products = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+       products = await Http.GetFromJsonAsync<List<Product>>("products") ?? new();
+    }
+}
