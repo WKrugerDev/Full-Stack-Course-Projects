@@ -1,161 +1,91 @@
--- ============================================================
--- SmartShopInventoryLab_PostgreSQL.sql
--- PostgreSQL-specific SQL Queries for SmartShop Inventory System
--- 
--- Purpose:
--- This file ensures all queries from SmartShopInventoryLab.sql 
--- are fully compatible with PostgreSQL syntax and features.
--- Includes basic, complex, and optimized queries.
--- Copilot-assisted notes included as comments.
--- ============================================================
+# SmartShop Inventory System – SQL Project
 
--- ============================================================
--- Activity 1: Basic SQL Queries
--- ============================================================
+This repository contains SQL queries for the **SmartShop Inventory System**, demonstrating practical use of SQL for managing inventory, sales, and supplier data across multiple stores.  
 
--- 1a) Retrieve product details (ProductName, Category, Price, StockLevel)
--- PostgreSQL-specific: proper table aliases and explicit join syntax
-SELECT 
-    p."ProductName",
-    c."CategoryName" AS "Category",
-    p."Price",
-    p."StockLevel"
-FROM 
-    "Products" p
-JOIN 
-    "Categories" c ON p."CategoryID" = c."CategoryID"
-ORDER BY 
-    p."ProductName";
+The project was developed using **Microsoft Copilot** for query generation, debugging, and optimization.
 
--- 1b) Filter products in a specific category (example: Electronics)
-SELECT 
-    p."ProductName",
-    c."CategoryName" AS "Category",
-    p."Price",
-    p."StockLevel"
-FROM 
-    "Products" p
-JOIN 
-    "Categories" c ON p."CategoryID" = c."CategoryID"
-WHERE 
-    c."CategoryName" = 'Electronics'
-ORDER BY 
-    p."ProductName";
+---
 
--- 1c) Filter products with low stock levels (StockLevel < 10)
-SELECT 
-    p."ProductName",
-    c."CategoryName" AS "Category",
-    p."Price",
-    p."StockLevel"
-FROM 
-    "Products" p
-JOIN 
-    "Categories" c ON p."CategoryID" = c."CategoryID"
-WHERE 
-    p."StockLevel" < 10
-ORDER BY 
-    p."ProductName";
+## 🧱 Tech Stack
 
--- 1d) Sort products by Price ascending
-SELECT 
-    p."ProductName",
-    c."CategoryName" AS "Category",
-    p."Price",
-    p."StockLevel"
-FROM 
-    "Products" p
-JOIN 
-    "Categories" c ON p."CategoryID" = c."CategoryID"
-ORDER BY 
-    p."Price" ASC;
+- PostgreSQL
+- Standard SQL
+- Microsoft Copilot assistance
 
--- ============================================================
--- Activity 2: Complex SQL Queries
--- ============================================================
+---
 
--- 2a) Multi-table JOINs (Products, Sales, Stores)
-SELECT 
-    p."ProductName",
-    s."SaleDate",
-    st."StoreLocation",
-    s."UnitsSold"
-FROM 
-    "Sales" s
-JOIN 
-    "Products" p ON s."ProductID" = p."ProductID"
-JOIN 
-    "Stores" st ON s."StoreID" = st."StoreID"
-ORDER BY 
-    s."SaleDate" DESC, p."ProductName";
+## 📁 Project Structure
 
--- 2b) Total sales per product using SUM and GROUP BY
-SELECT 
-    p."ProductID",
-    p."ProductName",
-    SUM(s."UnitsSold") AS "TotalUnitsSold"
-FROM 
-    "Sales" s
-JOIN 
-    "Products" p ON s."ProductID" = p."ProductID"
-GROUP BY 
-    p."ProductID", p."ProductName"
-ORDER BY 
-    "TotalUnitsSold" DESC;
+### 1️⃣ SmartShopInventoryLab.sql  
+**Basic, complex, and optimized SQL queries (generic syntax)**
 
--- 2c) Suppliers with the most delayed deliveries using MAX
-SELECT 
-    sup."SupplierName",
-    MAX(sup."DeliveryDelayDays") AS "MaxDelayDays"
-FROM 
-    "Suppliers" sup
-GROUP BY 
-    sup."SupplierName"
-ORDER BY 
-    "MaxDelayDays" DESC
-LIMIT 5;
+**Demonstrates:**
 
--- 2d) Optimized multi-table join using CTE for recent sales
-WITH "RecentSales" AS (
-    SELECT *
-    FROM "Sales"
-    WHERE "SaleDate" >= CURRENT_DATE - INTERVAL '30 days'
-)
-SELECT 
-    p."ProductName",
-    rs."SaleDate",
-    st."StoreLocation",
-    rs."UnitsSold"
-FROM 
-    "RecentSales" rs
-JOIN 
-    "Products" p ON rs."ProductID" = p."ProductID"
-JOIN 
-    "Stores" st ON rs."StoreID" = st."StoreID"
-ORDER BY 
-    rs."SaleDate" DESC, p."ProductName";
+- Basic querying and filtering:
+  - SELECT statements with column selection
+  - Filtering with `WHERE`
+  - Sorting with `ORDER BY`
+- Complex queries:
+  - Multi-table JOINs (Products, Sales, Stores)
+  - Nested queries and aggregate functions (SUM, MAX)
+  - CTEs for optimized query structure
+- Debugging & optimization:
+  - Corrected ambiguous column references
+  - Suggestions from Copilot for indexing and performance improvements
 
--- ============================================================
--- Activity 3: Debugging & Optimization Notes
--- ============================================================
+**Copilot assistance notes:**  
 
--- Copilot-assisted debugging:
--- - Corrected ambiguous column references with table aliases
--- - Checked and corrected JOIN logic for PostgreSQL syntax
--- - Used CTEs for performance improvements and readability
--- - Recommended indexes on frequently queried columns:
---   ProductID, StoreID, SaleDate, DeliveryDelayDays
+- Suggested JOINs and aliases for clarity and correctness  
+- Recommended using CTEs to reduce unnecessary computations  
+- Identified potential aggregation errors and helped correct GROUP BY clauses  
+- Suggested indexes for frequently queried columns (ProductID, StoreID, SaleDate, DeliveryDelayDays)  
 
--- PostgreSQL index examples (for guidance, not executed here):
--- CREATE INDEX idx_sales_productid ON "Sales"("ProductID");
--- CREATE INDEX idx_sales_storeid ON "Sales"("StoreID");
--- CREATE INDEX idx_sales_saledate ON "Sales"("SaleDate");
+---
 
--- Notes:
--- All queries are now fully PostgreSQL-compliant.
--- Queries maintain readability and maintainability, with Copilot suggestions incorporated.
--- Performance improvements should be validated on a populated PostgreSQL database.
+### 2️⃣ SmartShopInventoryLab_PostgreSQL.sql  
+**PostgreSQL-specific SQL queries for the same project**
 
--- ============================================================
--- End of SmartShopInventoryLab_PostgreSQL.sql
--- ============================================================
+**Demonstrates:**
+
+- PostgreSQL-compliant syntax:
+  - Double-quoted table and column names
+  - `INTERVAL` syntax for date arithmetic
+  - Explicit aliasing for clarity
+- All basic, complex, and optimized queries translated to PostgreSQL
+- Copilot-assisted debugging and optimization applied to PostgreSQL version
+
+**Copilot assistance notes:**  
+
+- Ensured PostgreSQL syntax compatibility for all queries  
+- Recommended indexing and query restructuring for performance and readability  
+- Corrected ambiguous column references and JOIN logic  
+
+---
+
+## 🧠 Key Learning Outcomes
+
+- Writing precise SQL queries for inventory and sales data retrieval  
+- Filtering, sorting, and aggregating data across multiple tables  
+- Using joins, nested queries, and CTEs for optimized query performance  
+- Applying Copilot for debugging, optimization, and query suggestions  
+- Translating queries to PostgreSQL-compliant syntax for real-world usage
+
+---
+
+## 📌 Running the Scripts
+
+- Both SQL files are self-contained and can be executed independently.  
+- PostgreSQL clients recommended:  
+  - **pgAdmin**  
+  - **psql**  
+  - Any SQL-compatible IDE  
+
+---
+
+## 💡 Possible Future Enhancements
+
+- Populate tables with sample data to test query performance  
+- Apply actual indexing and measure execution plans  
+- Add foreign key constraints for relational integrity  
+- Extend to include more advanced analytical queries and reporting  
+- Automate database setup with idempotent scripts
