@@ -1,4 +1,4 @@
-# FullStackApp – Blazor & Minimal API Project
+# FullStackApp Setup
 
 This repository contains a small full-stack .NET application demonstrating frontend-backend integration using Blazor WebAssembly and ASP.NET Core Minimal API.  
 

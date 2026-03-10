@@ -38,3 +38,6 @@ Thumbs.db
 
 # Ignore package folders
 packages/
+
+# Ignore Development files (password safety)
+**/appsettings.Development.json
