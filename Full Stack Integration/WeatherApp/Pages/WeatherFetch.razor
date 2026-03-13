@@ -1,0 +1,78 @@
+@page "/weatherfetch"
+
+@inject HttpClient Http
+
+<PageTitle>Weather Fetch</PageTitle>
+
+@if (errorMessage != null)
+{
+    <p style="color:red">@errorMessage</p>
+}
+else if (weather == null)
+{
+    <p><em>Loading weather data....</em></p>
+}
+else{
+    <table>
+        <thead>
+            <tr>
+                <th>Country</th>
+                <th>Location</th>
+                <th>Temperature</th>
+                <th>Condition</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@weather.Location.Country</td>
+                <td>@weather.Location.Name</td>
+                <td>@weather.Current.Temp_C</td>
+                <td>@weather.Current.Condition.Text <img src="https:@weather.Current.Condition.Icon" alt="Weather Condition"/></td>
+            </tr>
+            
+            
+        </tbody>
+    </table>
+}
+
+@code{
+    private WeatherData? weather;
+    private string? errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            weather = await Http.GetFromJsonAsync<WeatherData>("https://api.weatherapi.com/v1/current.json?key=00b7a8f4feb041618fb132317261203&q=New York");
+    
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching data: {ex.Message}");
+            errorMessage = "Unable to load weather data now. Please try again later";
+        }
+    }
+    public class WeatherData 
+    {
+        public required Location Location { get ; set; }
+        public required Current Current { get; set; }
+    }
+
+    public class Location
+    {
+        public required string Name { get; set; }
+        public required string Country { get; set; }
+    }
+
+    public class Current
+    {
+        public required double Temp_C { get; set; }
+        public required Condition Condition { get; set; }
+    }
+
+    public class Condition
+    {
+        public required string Text { get; set; }
+        public required string Icon { get; set; }
+    }
+}

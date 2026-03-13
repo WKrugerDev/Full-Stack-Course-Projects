@@ -1,0 +1,60 @@
+@page "/fetchdata"
+@inject HttpClient Http
+
+<PageTitle>Fetch Data</PageTitle>
+
+<h1>Posts</h1>
+
+@if (posts is null)
+{
+    <p><em>@(isError ? "Error Fetching Data": "Loading...")</em></p>
+}
+else{
+    <table>
+        <thead>
+            <th>Post ID</th>y
+            <th>Title</th>
+            <th>Body</th>
+        </thead>
+        <tbody>
+            @foreach (var post in posts)
+            {
+                <tr>
+                    <td>@post.Id</td>
+                    <td>@post.Title</td>
+                    <td>@post.Body</td>
+                </tr>
+            }
+            
+        </tbody>
+    </table>
+}
+
+@code{
+    //Declare posts list
+    private List<Post>? posts;
+    private bool isError = false; 
+
+    //Fetch data from API endpoint
+    protected override async Task OnInitializedAsync (){
+        
+        try{
+            // Use HttpClient to call the API endpoint and fetch the data
+            posts = await Http.GetFromJsonAsync<List<Post>>("https://jsonplaceholder.typicode.com/posts");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching data: {ex.Message}");
+            posts = null;
+            isError = true;
+        }
+    } 
+    
+    //Declare posts variable
+    public class Post{
+        public int Id {get; set; }
+        public string? Title { get; set; }
+
+        public string? Body { get; set; }
+    }
+}
