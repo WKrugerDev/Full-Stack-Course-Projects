@@ -1,0 +1,154 @@
+@page "/dynamicweather"
+@using System.Runtime.Serialization
+@using WeatherApp.Models;
+@using WeatherApp.Services
+@inject WeatherStateService weatherStateService;
+
+<h3>Dynamic Data</h3>
+<button @onclick="RefreshAllData">Refresh All Data</button>
+@if(weatherStateService.ErrorMessage != null)
+{
+    <p style="color:red">@weatherStateService.ErrorMessage</p>
+}
+else{
+<h2>Weather</h2>
+<button @onclick="RefreshWeather">Refresh Weather</button>
+@if(isLoadingWeather)
+{
+    <p>Please wait... Loading Data</p>
+}
+else if(weatherStateService.WeatherData == null )
+{
+    <p style="color:blue">No Weather to fetch</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Country</th>
+                <th>Location</th>
+                <th>Temperature</th>
+                <th>Condition</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@weatherStateService.WeatherData.Location.Country</td>
+                <td>@weatherStateService.WeatherData.Location.Name</td>
+                <td>@weatherStateService.WeatherData.Current.Temp_C</td>
+                <td>@weatherStateService.WeatherData.Current.Condition.Text <img src="https:@weatherStateService.WeatherData.Current.Condition.Icon" alt="Weather Condition"/></td>
+            </tr>
+            
+            
+        </tbody>
+    </table>
+}
+<h2>Users</h2>
+<button @onclick="RefreshUser">Refresh Users</button>
+@if (isLoadingUser)
+{
+    <p>Please wait... Loading Data</p>
+}
+else if(weatherStateService.Users == null)
+{
+    <p style="color:blue">No Users to fetch</p>
+}
+else
+{
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+        </thead>
+        <tbody>
+            @foreach (var user in weatherStateService.Users)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@user.Address.Street, @user.Address.Suite, @user.Address.City, @user.Address.Zipcode</td>
+                </tr>
+            }
+            
+        </tbody>
+    </table>
+}
+}
+
+
+
+@code{
+    bool isLoadingUser = false;
+    bool isLoadingWeather = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        isLoadingUser = true;
+        isLoadingWeather = true;
+        await Task.Delay(2000);
+        try
+        {
+            await weatherStateService.FetchUserData();
+            await weatherStateService.FetchWeatherData();
+        }
+        finally
+        {
+            isLoadingUser = false;
+            isLoadingWeather = false;
+        }
+        
+    }
+
+    public async Task RefreshUser()
+    {
+        isLoadingUser = true;
+        await Task.Delay(2000);
+        try
+        {
+            await weatherStateService.FetchUserData();
+        }
+        finally
+        {
+            isLoadingUser = false;
+        }
+    }
+
+    public async Task RefreshWeather()
+    {
+        isLoadingWeather = true;
+        await Task.Delay(2000);
+        try
+        {
+            await weatherStateService.FetchWeatherData();
+        }
+        finally
+        {
+            isLoadingWeather = false;
+        }
+    }
+
+    public async Task RefreshAllData()
+    {
+        isLoadingUser = true;
+        isLoadingWeather = true;
+        await Task.Delay(2000);
+        try
+        {
+            await weatherStateService.FetchUserData();
+            await weatherStateService.FetchWeatherData();
+        }
+        finally
+        {
+            isLoadingUser = false;
+            isLoadingWeather = false;
+        }
+        
+    }
+
+    
+
+}
