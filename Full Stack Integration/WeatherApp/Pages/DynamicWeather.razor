@@ -1,8 +1,8 @@
 @page "/dynamicweather"
-@using System.Runtime.Serialization
 @using WeatherApp.Models;
-@using WeatherApp.Services
+@using WeatherApp.Services;
 @inject WeatherStateService weatherStateService;
+@implements IDisposable;
 
 <h3>Dynamic Data</h3>
 <button @onclick="RefreshAllData">Refresh All Data</button>
@@ -85,6 +85,10 @@ else
     bool isLoadingUser = false;
     bool isLoadingWeather = false;
 
+    protected override void OnInitialized()
+    {
+        weatherStateService.OnChange += StateHasChanged;
+    }
     protected override async Task OnInitializedAsync()
     {
         isLoadingUser = true;
@@ -149,6 +153,9 @@ else
         
     }
 
-    
+    public void Dispose()
+    {
+        weatherStateService.OnChange -= StateHasChanged;
+    }
 
 }

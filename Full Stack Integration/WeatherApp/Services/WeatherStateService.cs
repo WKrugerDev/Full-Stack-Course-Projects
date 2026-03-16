@@ -15,15 +15,16 @@ namespace WeatherApp.Services
         public event Action? OnChange;
         private void NotifyStateChange() => OnChange?.Invoke();
 
-        public List<User>? Users { get; set; }
+        public List<User>? Users { get; private set; }
 
-        public WeatherData? WeatherData { get; set; }
+        public WeatherData? WeatherData { get; private set; }
         public string? ErrorMessage { get; private set; }
 
         
 
         public async Task FetchUserData()
         {
+            ErrorMessage = Null;
             userCts?.Cancel(); //Cancel any previous requests
             userCts = new CancellationTokenSource();
         
@@ -49,6 +50,8 @@ namespace WeatherApp.Services
 
         public async Task FetchWeatherData()
         {
+            ErrorMessage = null;
+            
             weatherCts?.Cancel(); //Cancel any previous requests
             weatherCts = new CancellationTokenSource();
         
