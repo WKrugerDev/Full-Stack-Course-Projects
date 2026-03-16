@@ -1,0 +1,82 @@
+@page "/fetchusers"
+@inject HttpClient http
+@using AsyncApi.Models
+@rendermode InteractiveServer
+
+<PageTitle>Fetch Users</PageTitle>
+<h3>List of Users</h3>
+
+@if (isLoading)
+{
+ <p>Loading Users</p>
+}
+else if (!string.IsNullOrEmpty(ErrorMessage))
+{
+    <p>@ErrorMessage</p>
+}
+else if(Users != null)
+{
+<table>
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+        </thead>
+        <tbody>
+            @foreach (var user in Users)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@user.Address.Street, @user.Address.Suite, @user.Address.City, @user.Address.Zipcode</td>
+                </tr>
+            }
+            
+        </tbody>
+    </table>
+<button @onclick="FetchUser">Fetch New Users</button>
+}
+else
+{
+    <p>No data available</p>
+}
+
+
+
+@code{
+    public List<User>? Users;
+    public bool isLoading = false;
+    public string? ErrorMessage = null;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            await FetchUser();
+        }
+    }
+
+    public async Task FetchUser()
+    {
+        isLoading = true;
+        ErrorMessage = null;
+        Users = null;
+        await InvokeAsync(StateHasChanged);
+        await Task.Delay(2000);
+        try
+        {
+            Users = await http.GetFromJsonAsync<List<User>>("https://jsonplaceholder.typicode.com/users");
+        }
+        catch(Exception ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+}
