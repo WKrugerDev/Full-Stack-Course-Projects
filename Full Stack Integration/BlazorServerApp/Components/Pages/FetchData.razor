@@ -1,0 +1,19 @@
+@page "/fetchdata"
+@using BlazorServerApp.Services
+@inject CacheService CacheService
+
+<PageTitle>Fetch Data</PageTitle>
+
+<p><b>Temp:</b> @(WeatherData ?? "Loading...")</p>
+
+@code{
+    private string? WeatherData;
+
+    protected override async Task OnInitializedAsync(){
+        WeatherData =  CacheService.GetOrCreate("weatherData", entry =>
+        {
+            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5);
+            return "Sample weather data"; //Replace with real fetch login in real application
+        });
+    }
+}
