@@ -1,0 +1,56 @@
+@page "/chat"
+@using RealTimeChatApp.Shared.Models
+@using RealTimeChatApp.Client.Services
+@inject ChatService chatService
+@namespace RealTimeChatApp.Client.Pages
+
+<h3>Chat</h3>
+<input @bind="user" placeholder="Your name"/>
+<input @bind="message" placeholder="Your Message"/>
+<button @onclick="SendMessage">Send Message</button>
+
+<ul>
+    @foreach(var chat in chats)
+    {
+        <li><strong>@chat.User</strong>: @chat.Message (@chat.Timestamp)</li>
+    }
+</ul>
+
+@code{
+    private string? user;
+    private string? message;
+    private List<ChatMessage> chats = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        chatService.OnMessageReceived += (chat) =>
+        {
+            chats.Add(chat);
+            InvokeAsync(StateHasChanged);
+        };
+
+        try{
+            await chatService.StartAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error connecting to chat hub: {ex.Message}");
+        }
+    }
+
+    private async Task SendMessage()
+    {
+        if(!string.IsNullOrWhiteSpace(user) && !string.IsNullOrWhiteSpace(message))
+        {
+            var chatMessage = new ChatMessage
+            {
+                User = user,
+                Message = message,
+                Timestamp = DateTime.Now
+            };
+
+            await chatService.SendMessage(chatMessage);
+            message = string.Empty;
+        }
+    }
+}
